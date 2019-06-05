@@ -1,7 +1,48 @@
-//FUNCTIONS
-function devetkaResize(middleSize) {
+//DOCUMENT LOAD
+$(document).ready(function(){
+   loadHtml();
+   setTimeout(devetkaResize, 10,window.innerWidth);
+   setTimeout(setActive, 10, 'activate');
+   setTimeout(navIndicatorResize, 10,window.innerWidth);
+});
+
+//RENDER NAVIGATION
+function loadHtml() {
+    $('#navigation').load("../SupportHTML/Nav.html");
+};
+
+var timecheck;
+$('#navigation').on('mouseenter', '.nav-link', function() {
+    setTimeout(setActive, 100,'deactivate');
+    clearTimeout(timecheck);
+})
+$('#navigation').on('mouseleave', '.nav-link', function() {
+    timecheck = setTimeout(setActive, 200,'activate');
+})
+/*function navHover() {
+   this.navitems = $('.nav-link').not('.active')
+   console.log(navitems);
+   navitems.mouseenter(setActive('deactivate'));
+   navitems.mouseleave(setActive('activate'));
+}*/
+var navitems;
+
+//NAVIGATION FUNCTIONS
+function setActive(string) {
+    var url = window.location.pathname;
+    var filename = url.substring(url.lastIndexOf('/')+1, url.length-5);
+    if (string === 'activate') {
+       $('#' + filename).addClass('active'); 
+    }
+    //presumed string === deactivate
+    else {
+       $('#' + filename).removeClass('active');
+    }
+}
+
+function devetkaResize(windowSize) {
     var devetka = document.getElementById('tim-devetka')
-    if (middleSize === true) {
+    if (windowSize < 995 & windowSize >= 768) {
         devetka.innerHTML = 'Devetka'; 
         }
     else {
@@ -22,44 +63,13 @@ function navIndicatorResize(windowSize) {
     
 }
 
+//NAVIGATION EVENT
+
 //RESIZE
 $(window).resize(function() {
-
-if (window.innerWidth < 995 & window.innerWidth > 768) {
-    devetkaResize(true);
-}
-else {
-    devetkaResize(false);
-}
-navIndicatorResize(window.innerWidth);
+    devetkaResize(window.innerWidth);
+    navIndicatorResize(window.innerWidth);
 });  
 
-//DOCUMENT LOAD
-function loadHtml() {
-    $('#navigation').load("../SupportHTML/Nav.html");
-}
-
-function setActive() {
-    var url = window.location.pathname;
-    var filename = url.substring(url.lastIndexOf('/')+1, url.length-5);
-    $('#' + filename).addClass('active');
-}
-
-function checkDevetka() {
-    if (window.innerWidth < 995 & window.innerWidth > 768) {
-    devetkaResize(true);
-    }
-    else {
-     devetkaResize(false);
-    }
-};
-
-$(document).ready(function(){
-   loadHtml();
-   setTimeout(checkDevetka, 10);
-   setTimeout(setActive, 10);
-   setTimeout(navIndicatorResize, 10,window.innerWidth);
-   console.log(window.innerWidth);
-});
 
 

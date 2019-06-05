@@ -8300,6 +8300,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: inherit;
     border-color: #dee2e6; } }
 /*# sourceMappingURL=bootstrap.min.css.map */
+@keyframes navAnimation {
+  from {
+    background-color: gray; }
+  to {
+    background-color: red; } }
 .navbar-nav {
   width: 90%; }
   @media (max-width: 995px) {
@@ -8309,6 +8314,8 @@ a.text-dark:focus, a.text-dark:hover {
 .nav-link {
   text-align: center; }
   .nav-link.active {
+    animation-name: navAnimation;
+    animation-duration: 2s;
     background-color: red; }
   @media (max-width: 768px) {
     .nav-link {
@@ -8319,6 +8326,10 @@ a.text-dark:focus, a.text-dark:hover {
       border-style: solid;
       border-color: black;
       border-width: 1px; } }
+  .nav-link:hover {
+    animation-name: navAnimation;
+    animation-duration: 2s;
+    background-color: red; }
 
 #nav-indicator {
   width: 0;
@@ -8360,7 +8371,11 @@ a.text-dark:focus, a.text-dark:hover {
       padding-right: 5px; } }
 
 #navigation {
-  background-color: yellow; }
+  background-color: yellow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; }
 
 @media (max-width: 768px) {
   #nav-wrap {

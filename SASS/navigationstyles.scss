@@ -1,5 +1,10 @@
 //NAVIGATION STYLES
 
+@keyframes navAnimation {
+  from {background-color: gray;}
+  to {background-color: red;}
+}
+
 .navbar-nav {
     width: 90%;
     @media (max-width: 995px)
@@ -12,6 +17,8 @@
     text-align: center;
     
         &.active {
+        animation-name: navAnimation;
+        animation-duration: 2s;
         background-color: red;
         }
     
@@ -24,6 +31,11 @@
         border-color: black;
         border-width: 1px;
     }
+        &:hover {
+            animation-name: navAnimation;
+            animation-duration: 2s;
+            background-color: red;
+        }
 }
 
 #nav-indicator {
@@ -80,6 +92,10 @@
 
 #navigation {
     background-color: yellow;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 #nav-wrap {
