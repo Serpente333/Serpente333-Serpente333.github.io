@@ -9,6 +9,7 @@ $(document).ready(function(){
 //RENDER NAVIGATION
 function loadHtml() {
     $('#navigation').load("../SupportHTML/Nav.html");
+    $('#footer').load("../SupportHTML/Footer.html");
 };
 
 var timecheck;
