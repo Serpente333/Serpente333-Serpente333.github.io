@@ -2,23 +2,42 @@
 $(document).ready(function(){
    loadHtml();
    setTimeout(devetkaResize, 10,window.innerWidth);
-   setTimeout(setActive, 10, 'activate');
+   setTimeout(setActiveNav, 10, 'activate');
    setTimeout(navIndicatorResize, 10,window.innerWidth);
+   setTimeout(setActiveHeader, 100);
 });
 
-//RENDER NAVIGATION
+//RENDER SUPPORT HTMLS
 function loadHtml() {
     $('#navigation').load("../SupportHTML/Nav.html");
     $('#footer').load("../SupportHTML/Footer.html");
+    $('#header').load("../SupportHTML/Header.html");
 };
 
+//HELPER FUNCTIONS
+function getFileName() {
+     var url = window.location.pathname;
+    var filename = url.substring(url.lastIndexOf('/')+1, url.length-5);
+    return filename;
+}
+//HEADER FUNCTIONS
+
+function setActiveHeader() {
+   var filename = getFileName();
+   var carouselItem = $('#header-' + filename);
+   var carouselIndicator = $('#header-indicator-' + filename);
+   carouselItem.addClass('active');
+   carouselIndicator.addClass('active');
+}
+
+//NAVIGATION FUNCTIONS
 var timecheck;
 $('#navigation').on('mouseenter', '.nav-link', function() {
-    setTimeout(setActive, 100,'deactivate');
+    setTimeout(setActiveNav, 100,'deactivate');
     clearTimeout(timecheck);
 })
 $('#navigation').on('mouseleave', '.nav-link', function() {
-    timecheck = setTimeout(setActive, 200,'activate');
+    timecheck = setTimeout(setActiveNav, 300,'activate');
 })
 /*function navHover() {
    this.navitems = $('.nav-link').not('.active')
@@ -28,16 +47,14 @@ $('#navigation').on('mouseleave', '.nav-link', function() {
 }*/
 var navitems;
 
-//NAVIGATION FUNCTIONS
-function setActive(string) {
-    var url = window.location.pathname;
-    var filename = url.substring(url.lastIndexOf('/')+1, url.length-5);
+function setActiveNav(string) {
+    filename = getFileName();
     if (string === 'activate') {
-       $('#' + filename).addClass('active'); 
+       $('#' + filename).addClass('activeNav'); 
     }
     //presumed string === deactivate
     else {
-       $('#' + filename).removeClass('active');
+       $('#' + filename).removeClass('activeNav');
     }
 }
 

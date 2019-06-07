@@ -17,6 +17,10 @@
 #footer-intro {
     padding-top: 20px;
     padding-bottom: 10px;
+    @media(min-width: 768px){
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
 }
 #footer-info {
     padding-top: 10px;
@@ -29,6 +33,10 @@
 
 #footer-info-open {
     padding-bottom: 10px;
+    @media(max-width: 768px)
+    {
+        padding-top:10px;
+    }
 }
 
 #footer-links {
