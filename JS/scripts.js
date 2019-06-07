@@ -4,7 +4,8 @@ $(document).ready(function(){
    setTimeout(devetkaResize, 10,window.innerWidth);
    setTimeout(setActiveNav, 10, 'activate');
    setTimeout(navIndicatorResize, 10,window.innerWidth);
-   setTimeout(setActiveHeader, 100);
+   setTimeout(setActiveHeader, 50);
+   setTimeout(startCarousel, 60)
 });
 
 //RENDER SUPPORT HTMLS
@@ -21,6 +22,12 @@ function getFileName() {
     return filename;
 }
 //HEADER FUNCTIONS
+
+function startCarousel() {
+    $('.carousel').carousel({
+             interval: 3000
+         })
+}
 
 function setActiveHeader() {
    var filename = getFileName();
